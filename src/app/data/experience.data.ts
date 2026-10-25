@@ -4,15 +4,26 @@ import { Job } from './content.model';
 export const JOBS: Job[] = [
   {
     company: 'OpenText',
-    role: 'Senior Software Engineer',
+    role: 'Lead Software Engineer',
     when: 'Sep 2016 – Present',
     from: '2016-09',
     bullets: [
       'Work with software development, quality assurance and product management teams to design ' +
-        'and implement features and protocols for Identity Management and 2nd Factor ' +
+        'and implement features and protocols for Identity Management and Multi-Factor ' +
         'Authentication solutions.',
-      'Developed a web application with Angular and Quarkus that lets customers fully customize ' +
-        'the Identity Management solution to suit their environment.',
+      'Deep work on the authentication protocols themselves: OAuth 2.0 flows and grant types, ' +
+        'SAML 2.0 assertions and federation, and the token and session handling behind them — down ' +
+        'to the servlet-container layer, where the handshakes, redirects and TLS actually land on ' +
+        'Tomcat and Jetty.',
+      'Extended multi-factor authentication past one-time codes: biometric factors such as facial ' +
+        'recognition and fingerprint, and FIDO2 / WebAuthn passkey-style flows, including the ' +
+        'enrollment and verification plumbing around them.',
+      'Named Security Champion for the product: runs CVE and dependency scanning across the ' +
+        'codebase with OWASP Dependency-Check and Black Duck, triages what comes back and drives ' +
+        'the fixes, so the product holds up against modern security standards rather than the ' +
+        'ones in place when it started.',
+      'Developed the Angular web application that lets customers fully customize the Identity ' +
+        'Management solution to suit their own environment.',
       "Built an automated testing framework that implements a RESTful API against OpenText's " +
         'OAuth/SAML product — it grants access tokens with grant types, requests resources from a ' +
         'Resource Owner, and acts as an attacker attempting to abuse the authentication system.',
@@ -26,10 +37,16 @@ export const JOBS: Job[] = [
       'Java',
       'Groovy',
       'Angular',
-      'Quarkus',
       'OAuth 2.0',
       'SAML 2.0',
-      '2FA',
+      'MFA / 2FA',
+      'FIDO2 / WebAuthn',
+      'Biometric auth',
+      'Tomcat',
+      'Jetty',
+      'CVE & dependency scanning',
+      'OWASP Dependency-Check',
+      'Black Duck',
       'REST',
       'Jenkins',
       'Kubernetes',

@@ -6,11 +6,12 @@ import { NavItem } from '../data/content.model';
  */
 export const SITE = {
   name: 'Daniel Diaz',
-  role: 'Senior Software Engineer · Identity & Access',
+  role: 'Lead Software Engineer · Identity & Access',
   tagline:
     'I spend my days on the parts of software that decide who is allowed in — OAuth 2.0, ' +
-    'SAML 2.0 and second-factor authentication. My nights go to building worlds in Godot ' +
-    'and pointing a camera at the Milky Way.',
+    'SAML 2.0 and second-factor authentication.',
+  /** rendered on screen only — the printed résumé leaves astrophotography out */
+  taglineTail: ' My nights go to building worlds in Godot and pointing a camera at the Milky Way.',
   location: 'Covington, WA — Seattle area',
   email: 'danielhdiaz88@gmail.com',
   links: {
@@ -22,7 +23,7 @@ export const SITE = {
   /** the "Currently" facts under the hero name */
   facts: [
     { strong: '9+ years', text: 'shipping identity & authentication software' },
-    { strong: 'Senior Software Engineer', text: 'at OpenText' },
+    { strong: 'Lead Software Engineer', text: 'at OpenText' },
     { strong: 'Covington, WA', text: '— Seattle area' },
   ],
   availability: [

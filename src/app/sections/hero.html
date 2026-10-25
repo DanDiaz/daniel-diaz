@@ -24,7 +24,7 @@
       <span class="line">{{ site.name }}</span>
     </h1>
 
-    <p class="hero-lead">{{ site.tagline }}</p>
+    <p class="hero-lead">{{ site.tagline }}<span class="screen-only">{{ site.taglineTail }}</span></p>
 
     <ul class="hero-facts" aria-label="At a glance">
       @for (fact of site.facts; track fact.strong) {

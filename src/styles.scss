@@ -374,14 +374,13 @@ html.js-reveal .reveal.is-in {
    ============================================================ */
 @media print {
   @page {
-    margin: 14mm 15mm;
+    margin: 11mm 13mm;
   }
 
   html,
   body {
     background: #fff;
     color: #12161d;
-    font-size: 10.5pt;
     line-height: 1.45;
   }
 
@@ -395,6 +394,9 @@ html.js-reveal .reveal.is-in {
   dd-lightbox,
   dd-astro-gallery,
   dd-interests,
+  .screen-only,
+  .about-panel,
+  .project-body .bullets,
   .about-panel::before {
     display: none !important;
   }
@@ -424,7 +426,6 @@ html.js-reveal .reveal.is-in {
   }
 
   .section {
-    padding: 10pt 0 !important;
     background: none !important;
     border: 0 !important;
   }
@@ -451,6 +452,8 @@ html.js-reveal .reveal.is-in {
   .bullets li,
   .project-body p,
   .about-copy p,
+  .section-intro,
+  .lede,
   .contact-val {
     color: #2c3542 !important;
   }
@@ -474,7 +477,6 @@ html.js-reveal .reveal.is-in {
     border: 0 !important;
     border-top: 0.6pt solid #dde3ec !important;
     border-radius: 0 !important;
-    padding: 8pt 0 !important;
     box-shadow: none !important;
     transform: none !important;
     background: none !important;
@@ -534,6 +536,247 @@ html.js-reveal .reveal.is-in {
   #skills,
   #education,
   #contact {
-    break-inside: avoid-page;
+    break-inside: auto;
+  }
+
+  /* Keep the small units intact instead of the whole section, or long sections
+     jump pages and leave half-blank sheets behind. */
+  .bullets li,
+  .edu-row,
+  .contact-list li {
+    break-inside: avoid;
+  }
+
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  app-root {
+    min-height: 0 !important;
+  }
+
+  html,
+  body {
+    font-size: 10pt;
+  }
+
+  /* Anything not yet scrolled into view is still transparent on screen - print it. */
+  html.js-reveal .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Grid containers fragment badly across pages (whole rows jump and leave blanks),
+     so the two card sections flow as blocks when printing. */
+  .projects,
+  .skills {
+    display: block !important;
+  }
+
+  .projects > *,
+  .skill-group {
+    margin-bottom: 8pt;
+  }
+
+  /* Skills read as compact one-line lists on paper, not as cards. */
+  .skill-group {
+    border: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    margin: 0 0 4pt !important;
+  }
+
+  .skill-group h3 {
+    display: inline;
+    margin: 0 5pt 0 0;
+    font-size: 8.5pt;
+  }
+
+  .skill-group .taglist {
+    display: inline;
+  }
+
+  .skill-group .taglist li {
+    display: inline;
+    border: 0 !important;
+    background: none !important;
+    padding: 0 !important;
+    font-size: 9pt;
+  }
+
+  .skill-group .taglist li::after {
+    content: ' · ';
+    color: #7b8798;
+  }
+
+  .skill-group .taglist li:last-child::after {
+    content: '';
+  }
+
+  /* Skills in two newspaper columns so the list stays above the fold on page 2. */
+  .skills {
+    columns: 2;
+    column-gap: 18pt;
+  }
+
+  .skill-group {
+    break-inside: avoid;
+  }
+
+  .entry + .entry {
+    margin-top: 6pt;
+  }
+
+  /* One line per project on paper: kind + name. About already covers the
+     foundations work, and the hidden media area must not reserve height. */
+  .project-body p:not(.project-kind),
+  .project .chips,
+  #foundations {
+    display: none !important;
+  }
+
+  .project-body {
+    padding: 0 !important;
+  }
+
+  .project {
+    display: block !important;
+    padding: 4pt 0 !important;
+    border: 0 !important;
+    border-top: 0.6pt solid #dde3ec !important;
+  }
+
+  /* The screen layout gives each row a 6.5rem label column; with the label hidden the
+     value would collapse into it and wrap the email mid-word. */
+  .contact-list {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 0 14pt !important;
+    margin: 4pt 0 0 !important;
+  }
+
+  .contact-list li {
+    display: block !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+
+  .contact-val {
+    white-space: nowrap;
+  }
+
+  /* ---- final squeeze to two sheets ---- */
+  html,
+  body {
+    font-size: 9.5pt;
+    line-height: 1.36;
+  }
+
+  .section {
+    padding: 4pt 0 !important;
+  }
+
+  h2 {
+    margin: 0 0 3pt !important;
+  }
+
+  .edu-row {
+    padding: 5pt !important;
+  }
+
+  .contact-list {
+    margin-top: 2pt !important;
+  }
+
+  .bullets li {
+    margin-bottom: 1pt;
+  }
+
+  /* Section intros are screen prose; the headings say the same on paper. */
+  .section-intro,
+  .panel-title {
+    display: none !important;
+  }
+
+  /* The "Looking for" aside and the ongoing self-employed entry duplicate the
+     Projects section, which prints - keep the two sheets for hired roles. */
+  .availability,
+  .timeline > .entry:last-child,
+  .entry .chips {
+    display: none !important;
+  }
+
+  h2 {
+    font-size: 11.5pt;
+    margin: 0 0 4pt;
+  }
+
+  h3 {
+    font-size: 10.5pt;
+    margin: 0 0 2pt;
+  }
+
+  .hero-name {
+    font-size: 22pt !important;
+    margin: 0 0 3pt !important;
+  }
+
+  .hero-lead {
+    font-size: 10pt !important;
+    margin: 0 0 4pt !important;
+  }
+
+  .hero-facts {
+    margin: 0;
+  }
+
+  .bullets {
+    padding-left: 11pt;
+  }
+
+  .bullets li {
+    margin-bottom: 1.5pt;
+  }
+
+  .contact-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 12pt;
+  }
+
+  .contact-key {
+    display: none;
+  }
+
+  .bullets li {
+    margin-bottom: 3pt;
+  }
+
+  .chips,
+  .taglist {
+    gap: 3pt 4pt;
+  }
+
+  .chips li,
+  .taglist li {
+    font-size: 7.5pt;
+    padding: 1pt 4pt;
+  }
+
+  .about-panel dt,
+  .stack dt,
+  .entry-when,
+  .project-kind,
+  .kicker {
+    color: #7a5314 !important;
+  }
+
+  .about-panel dd,
+  .stack dd,
+  .project-body p {
+    color: #2c3542 !important;
   }
 }

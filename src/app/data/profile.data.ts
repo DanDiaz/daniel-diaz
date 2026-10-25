@@ -5,11 +5,14 @@ export const ABOUT_COPY: string[] = [
   "I'm a Computer Science graduate (Utah Valley University) who has spent most of a career on " +
     'one deceptively difficult problem: proving somebody is who they say they are, and then ' +
     'letting them through without getting in their way.',
-  'At OpenText I work across the whole stack of that problem — protocol features in Identity ' +
-    'Management and 2nd Factor Authentication, an Angular + Quarkus application that lets ' +
-    'customers configure the product to their own environment, and the automated framework my ' +
-    "team uses to attack it on purpose. Leading that automation project means reviewing other " +
-    "people's code as much as writing my own.",
+  'At OpenText I work across the whole stack of that problem — OAuth 2.0 and SAML 2.0 protocol ' +
+    'features in Identity Management, multi-factor work that runs from facial recognition and ' +
+    'fingerprint through FIDO2 / WebAuthn down to the Tomcat and Jetty containers the handshakes ' +
+    'land on, an Angular application that lets customers configure the product to their own ' +
+    'environment, and the automated framework my team uses to attack it on purpose. I am also ' +
+    'named Security Champion for the product, which means the CVE and dependency scanning is ' +
+    'mine to run and the findings are mine to drive to resolution. Leading that automation ' +
+    "project means reviewing other people's code as much as writing my own.",
   'Outside of work I build things from the bottom up: a first-person framework in Godot, a ' +
     'Kotlin Multiplatform chat client that runs on Android and iOS from one codebase, a ' +
     'DirectX 12 engine, an assembler and a compiler. I would rather understand a system down to ' +
@@ -20,13 +23,22 @@ export const ABOUT_COPY: string[] = [
 export const SHORT_VERSION: DefinitionItem[] = [
   {
     term: 'Currently',
-    detail: 'Senior Software Engineer, OpenText — Identity Management & 2FA',
+    detail: 'Lead Software Engineer, OpenText — Identity Management & MFA',
   },
   {
     term: 'Core',
     detail: 'Java, Groovy, Python, C++ · OAuth 2.0, SAML 2.0, MFA · REST APIs',
   },
-  { term: 'Also', detail: 'Angular, Quarkus, Jenkins, Kubernetes, Docker, Linux, Git' },
+  {
+    term: 'Security',
+    detail:
+      'Named Security Champion for the product — CVE and dependency scanning with OWASP ' +
+      'Dependency-Check and Black Duck, triage and remediation',
+  },
+  {
+    term: 'Also',
+    detail: 'Angular, Tomcat, Jetty, Jenkins, Kubernetes, Docker, Linux, Git',
+  },
   {
     term: 'Beyond the day job',
     detail: 'Godot 4 & GDScript, Blender, Kotlin Multiplatform, graphics & compilers',

@@ -39,6 +39,33 @@ SHOT_STATIC=1 node tools/shot.cjs 390 844 http://127.0.0.1:8850/ shot-mobile.png
 `SHOT_STATIC=1` asks for reduced motion so the scroll-reveal sections are visible in a
 stitched full-page capture. `tools/shot.cjs` also prints console errors and failed requests.
 
+## The résumé PDF
+
+The résumé **is** the web page: one source of truth in `src/app/data`. To produce the
+hand-out PDF:
+
+```bash
+npm run build
+npm run resume -- "C:/Users/iwrot/Downloads/Daniel Diaz Resume 2026.pdf"
+```
+
+`tools/make-resume-pdf.cjs` serves `dist/`, prints with the installed Edge, and then checks
+the printed text: it fails if a required string (Security Champion, OWASP Dependency-Check,
+Black Duck, FIDO2 / WebAuthn, Tomcat, Jetty, the email…) is missing, or if something
+screen-only leaked in. It prints **two Letter pages**; the `@media print` block in
+`src/styles.scss` decides what is on them.
+
+What the print view leaves out, and why:
+
+| Left out | Reason |
+| --- | --- |
+| Astrophotography — gallery, interests, the "Off the clock" card row, the hero's Milky Way clause | Not résumé material (the `taglineTail` in `site.config.ts` carries the screen-only half of the sentence) |
+| Screenshots, the chat illustration, project summaries / highlights / stack chips | One line per project on paper; the tech is already in the skills list |
+| The "short version" card, section intros, the "Looking for" aside | Duplicated by the hero facts, headings and About copy |
+| Scroll-reveal opacity | Unrevealed sections are transparent on screen; print forces them visible |
+
+If you change copy, re-run `npm run resume` — the PDF is a build artefact, not a file to edit.
+
 ## Deploy to Netlify
 
 **Option A — drag and drop.** <https://app.netlify.com/drop> → drag the `dist/daniel-diaz/browser`
@@ -99,6 +126,7 @@ tools/import_astro.py              drop new astro frames in: resize + strip EXIF
 tools/make_placeholders.py         (optional) plates for a tile whose real photo isn't ready
 tools/serve-dist.cjs               Netlify-like preview of the production build
 tools/shot.cjs                     headless screenshot + console-error check
+tools/make-resume-pdf.cjs          print the site to the two-page résumé PDF (`npm run resume`)
 ```
 
 ## Before you send the link around

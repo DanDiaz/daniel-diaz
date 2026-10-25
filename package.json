@@ -9,6 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "serve:dist": "node tools/serve-dist.cjs",
+    "resume": "node tools/make-resume-pdf.cjs",
     "placeholders": "python tools/make_placeholders.py",
     "shot": "node tools/shot.cjs"
   },
