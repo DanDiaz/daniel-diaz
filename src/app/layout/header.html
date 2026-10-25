@@ -1,0 +1,42 @@
+<header class="site-head" [class.is-stuck]="stuck()" (window:scroll)="onScroll()">
+  <div class="wrap head-inner">
+    <a class="brand" href="#top" aria-label="Daniel Diaz, back to top">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-opacity=".35" />
+        <path
+          d="M16 4.5l2.1 7.1 7.4.1-5.9 4.5 2.2 7.2-5.8-4.4-5.8 4.4 2.2-7.2-5.9-4.5 7.4-.1z"
+          fill="currentColor"
+        />
+      </svg>
+      <span class="brand-name">{{ brand }}</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Sections" [class.is-open]="menuOpen()">
+      <ul>
+        @for (item of items; track item.id) {
+          <li>
+            <a
+              [href]="'#' + item.id"
+              [class.is-current]="current() === item.id"
+              (click)="closeMenu()"
+              >{{ item.label }}</a
+            >
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <button
+      id="navToggle"
+      class="nav-toggle"
+      type="button"
+      [attr.aria-controls]="'nav'"
+      [attr.aria-expanded]="menuOpen()"
+      [attr.aria-label]="menuOpen() ? 'Close menu' : 'Open menu'"
+      (click)="toggleMenu()"
+      (document:keydown.escape)="onMenuKey()"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>

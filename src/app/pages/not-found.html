@@ -1,0 +1,16 @@
+<section class="lost">
+  <canvas class="stars" appStarfield aria-hidden="true"></canvas>
+
+  <div class="wrap lost-inner">
+    <p class="lost-kicker">404 &middot; no route to host</p>
+    <h1 class="lost-title">This page drifted off into the debris field.</h1>
+    <p class="lost-lead">The link is broken or the page moved. Everything else is still here.</p>
+
+    <div class="cta-row lost-cta">
+      <a class="btn btn--primary" routerLink="/">Back to the top</a>
+      @for (item of items.slice(0, 3); track item.id) {
+        <a class="btn" routerLink="/" [fragment]="item.id">{{ item.label }}</a>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+<section class="section" id="projects">
+  <div class="wrap">
+    <p class="kicker">Projects</p>
+    <h2>Things I designed and built</h2>
+    <p class="section-intro">
+      Self-directed work, taken from idea to running software. Source is private for now —
+      happy to walk through any of it, or share code, in a conversation.
+    </p>
+
+    <div class="projects">
+      @for (project of projects; track project.slug) {
+        <dd-project-card [project]="project" appReveal />
+      }
+
+      <article class="project project--wide" id="foundations" appReveal>
+        <div class="project-body">
+          <p class="project-kind">Fundamentals · C++</p>
+          <h3>Foundations: engine, assembler, compiler</h3>
+          <p class="lede">{{ foundations.summary }}</p>
+
+          <div class="foundations">
+            @for (block of foundations.blocks; track block.title) {
+              <div>
+                <h4>{{ block.title }}</h4>
+                <ul class="bullets bullets--tight">
+                  @for (point of block.points; track $index) {
+                    <li>{{ point }}</li>
+                  }
+                </ul>
+              </div>
+            }
+          </div>
+
+          <ul class="chips" aria-label="Stack for the fundamentals work">
+            @for (tag of foundations.stack; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>

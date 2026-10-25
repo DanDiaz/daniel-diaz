@@ -1,0 +1,19 @@
+<section class="section section--alt" id="skills">
+  <div class="wrap">
+    <p class="kicker">Skills</p>
+    <h2>What I bring</h2>
+
+    <div class="skills">
+      @for (group of groups; track group.title) {
+        <div class="skill-group" appReveal>
+          <h3>{{ group.title }}</h3>
+          <ul class="taglist">
+            @for (tag of group.tags; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

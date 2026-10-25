@@ -1,0 +1,66 @@
+@use '../styles/tokens' as *;
+
+.timeline {
+  position: relative;
+  margin-top: 2.2rem;
+  padding-left: clamp(1.1rem, 3vw, 2.2rem);
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 2px;
+    top: 0.6rem;
+    bottom: 0.6rem;
+    width: 1px;
+    background: linear-gradient(var(--amber), var(--line) 45%, transparent);
+  }
+}
+
+.entry {
+  position: relative;
+  padding-bottom: 2.8rem;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * clamp(1.1rem, 3vw, 2.2rem) - 5px);
+    top: 0.55rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--amber);
+  }
+}
+
+.section--alt .entry::before {
+  background: var(--bg-alt);
+}
+
+.entry-when {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  color: var(--cyan);
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
+}
+
+.entry-role {
+  margin-bottom: 0.1rem;
+}
+
+.entry-org {
+  color: var(--ink-faint);
+  margin-bottom: 0.9rem;
+  font-weight: 500;
+}
+
+@media print {
+  .entry {
+    padding-bottom: 10pt;
+  }
+}

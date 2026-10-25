@@ -1,0 +1,169 @@
+@use '../styles/tokens' as *;
+
+:host {
+  display: block;
+}
+
+.site-head {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(14px) saturate(1.4);
+  background: #05070fcc;
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.3s,
+    background 0.3s;
+
+  &.is-stuck {
+    border-bottom-color: var(--line);
+    background: #05070fee;
+  }
+}
+
+.head-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4.25rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 1.02rem;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.brand-mark {
+  width: 22px;
+  height: 22px;
+  color: var(--amber);
+  flex: none;
+}
+
+.nav ul {
+  display: flex;
+  gap: clamp(0.4rem, 1.6vw, 1.35rem);
+}
+
+.nav a {
+  display: block;
+  padding: 0.45rem 0.1rem;
+  color: var(--ink-dim);
+  font-size: var(--step--1);
+  font-weight: 500;
+  position: relative;
+  white-space: nowrap;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: 0.1rem;
+    height: 2px;
+    background: var(--amber);
+    transition: right 0.28s ease;
+  }
+
+  &:hover {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  &:hover::after,
+  &.is-current::after {
+    right: 0;
+  }
+
+  &.is-current {
+    color: var(--ink);
+  }
+}
+
+/* The button only exists once Angular has bootstrapped, so no JS gate needed. */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 0.6rem 0.55rem;
+
+  span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: var(--ink);
+    margin: 4px 0;
+    transition:
+      transform 0.3s,
+      opacity 0.2s;
+  }
+
+  &[aria-expanded='true'] {
+    span:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: absolute;
+    inset: 100% 0 auto;
+    background: #070b14f7;
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.34s ease;
+  }
+
+  .nav ul {
+    overflow: hidden;
+    display: grid;
+    padding: 0 var(--gutter);
+  }
+
+  .nav.is-open {
+    grid-template-rows: 1fr;
+
+    ul {
+      padding-block: 0.5rem 1.1rem;
+    }
+  }
+
+  .nav a {
+    padding: 0.7rem 0;
+    font-size: 1rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+}
+
+@media print {
+  :host {
+    display: none !important;
+  }
+}

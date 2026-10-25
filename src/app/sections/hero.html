@@ -1,0 +1,41 @@
+<section class="hero" id="top">
+  <canvas class="stars" appStarfield aria-hidden="true"></canvas>
+
+  <div class="sky-band" aria-hidden="true">
+    <picture>
+      <source srcset="/assets/img/sky-milkyway-1800.webp" type="image/webp" media="(min-width: 720px)" />
+      <source srcset="/assets/img/sky-milkyway-1000.webp" type="image/webp" />
+      <img
+        src="/assets/img/sky-milkyway-1800.jpg"
+        srcset="/assets/img/sky-milkyway-1000.jpg 1000w, /assets/img/sky-milkyway-1800.jpg 1800w"
+        sizes="100vw"
+        alt=""
+        width="1800"
+        height="360"
+        decoding="async"
+      />
+    </picture>
+  </div>
+
+  <div class="wrap hero-inner">
+    <p class="hero-eyebrow"><span class="dot"></span> {{ site.role }}</p>
+
+    <h1 class="hero-name">
+      <span class="line">{{ site.name }}</span>
+    </h1>
+
+    <p class="hero-lead">{{ site.tagline }}</p>
+
+    <ul class="hero-facts" aria-label="At a glance">
+      @for (fact of site.facts; track fact.strong) {
+        <li><strong>{{ fact.strong }}</strong> {{ fact.text }}</li>
+      }
+    </ul>
+
+    <div class="cta-row">
+      <a class="btn btn--primary" href="#projects">See what I&rsquo;ve built</a>
+      <a class="btn" [href]="'mailto:' + site.email">{{ site.email }}</a>
+      <dd-print-button />
+    </div>
+  </div>
+</section>

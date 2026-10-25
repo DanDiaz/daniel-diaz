@@ -1,0 +1,29 @@
+<section class="section" id="about">
+  <div class="wrap grid-2">
+    <div class="about-copy" appReveal>
+      <p class="kicker">About</p>
+      <h2>Engineer for the hard, quiet parts</h2>
+      @for (paragraph of paragraphs; track $index) {
+        <p [class.is-lead]="$first">{{ paragraph }}</p>
+      }
+    </div>
+
+    <aside class="panel about-panel" appReveal aria-label="Summary card">
+      <h3 class="panel-title">The short version</h3>
+      <dl class="stack">
+        @for (item of summary; track item.term) {
+          <div>
+            <dt>{{ item.term }}</dt>
+            <dd>{{ item.detail }}</dd>
+          </div>
+        }
+      </dl>
+      <a class="text-link" [href]="site.links.linkedin" rel="noopener">
+        {{ site.links.linkedinLabel }}
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+          <path d="M4 12L12 4M12 4H6.5M12 4v5.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+        </svg>
+      </a>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+<section class="section section--alt" id="contact">
+  <div class="wrap contact">
+    <div>
+      <p class="kicker">Contact</p>
+      <h2>Let&rsquo;s talk</h2>
+      <p class="section-intro">
+        I&rsquo;m open to senior software engineering roles — identity and security, backend, or
+        anything that rewards reading the specification properly. Email is the fastest way to reach
+        me.
+      </p>
+
+      <ul class="contact-list">
+        @for (channel of channels; track channel.key) {
+          <li>
+            <span class="contact-key">{{ channel.key }}</span>
+            @if (channel.href) {
+              <a class="contact-val" [href]="channel.href" rel="noopener">{{ channel.value }}</a>
+            } @else {
+              <span class="contact-val">{{ channel.value }}</span>
+            }
+          </li>
+        }
+      </ul>
+
+      <div class="cta-row">
+        <a class="btn btn--primary" [href]="'mailto:' + site.email">Send an email</a>
+        <dd-print-button />
+      </div>
+    </div>
+
+    <aside class="panel availability" aria-label="What I am looking for">
+      <h3 class="panel-title">Looking for</h3>
+      <ul class="bullets bullets--tight">
+        @for (item of site.availability; track item) {
+          <li>{{ item }}</li>
+        }
+      </ul>
+    </aside>
+  </div>
+</section>

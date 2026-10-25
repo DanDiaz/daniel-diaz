@@ -1,0 +1,166 @@
+@use '../styles/tokens' as *;
+
+.project {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #0b111d, #090e18);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition:
+    border-color 0.25s,
+    transform 0.25s;
+
+  &:hover {
+    border-color: #2c3a52;
+    transform: translateY(-3px);
+  }
+}
+
+.shot {
+  margin: 0;
+  position: relative;
+  background: #060a12;
+
+  picture,
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+
+  figcaption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 1.9rem 0.95rem 0.6rem;
+    font-size: 0.74rem;
+    color: #cfd9e8;
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+    background: linear-gradient(#0000, #05070fd0 55%, #05070fe6);
+  }
+
+  &--mock {
+    display: grid;
+    place-items: center;
+    padding: 1.3rem;
+    background: radial-gradient(120% 100% at 50% 0, #17233c, #070c16 70%);
+  }
+}
+
+.project-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.1rem, 2.2vw, 1.6rem);
+
+  > p {
+    color: var(--ink-dim);
+  }
+
+  .bullets {
+    margin-top: 0.9rem;
+  }
+
+  .chips {
+    margin-top: auto;
+    padding-top: 1.2rem;
+  }
+
+  .text-link {
+    margin-top: 1rem;
+  }
+}
+
+.project-kind {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.5rem;
+}
+
+.project-body h3 {
+  margin-bottom: 0.5rem;
+  font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.75rem);
+}
+
+/* --- the Sparky Chat tile: a CSS illustration, not a screenshot --- */
+.mock-phone {
+  width: min(270px, 74%);
+  border: 1px solid #2a3a55;
+  border-radius: 20px;
+  background: #0b1220;
+  box-shadow:
+    0 26px 50px -22px #000,
+    0 0 0 6px #0e1727;
+  overflow: hidden;
+  transform: translateY(-4px);
+}
+
+.mock-bar {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.55rem 0.7rem;
+  border-bottom: 1px solid #22314a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #dbe5f3;
+}
+
+.mock-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+}
+
+.mock-body {
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.mock-row {
+  font-size: 0.7rem;
+  line-height: 1.45;
+  padding: 0.45rem 0.6rem;
+  border-radius: 10px;
+
+  &.them {
+    background: #1a2438;
+    justify-self: start;
+    max-width: 85%;
+    border-bottom-left-radius: 3px;
+  }
+
+  &.me {
+    background: #12304055;
+    border: 1px solid #1d4c5c;
+    justify-self: end;
+    max-width: 92%;
+    border-bottom-right-radius: 3px;
+  }
+}
+
+.mock-reason {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: #8fd0e0;
+  border-left: 2px solid #3f8fa5;
+  padding-left: 0.4rem;
+  margin-bottom: 0.3rem;
+  opacity: 0.85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project:hover {
+    transform: none;
+  }
+}

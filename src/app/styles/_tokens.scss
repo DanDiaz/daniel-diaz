@@ -1,0 +1,54 @@
+// Design tokens for Daniel Diaz's personal site.
+// Colour, spacing and type scale live here; components use the CSS custom
+// properties so a change in one place follows the whole site.
+
+$font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+$font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+$font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+
+$bg: #05070f;
+$bg-alt: #070a13;
+$panel: #0c1220;
+$panel-2: #101828;
+$line: #1c2536;
+$ink: #e7edf7;
+$ink-dim: #a3b1c6;
+$ink-faint: #6d7c93;
+$amber: #f4b45c;
+$amber-deep: #d99338;
+$cyan: #63d3e8;
+$violet: #9d8bff;
+
+$wrap: 1120px;
+$gutter: clamp(1.15rem, 4vw, 2.5rem);
+$radius: 14px;
+$radius-sm: 9px;
+
+:root {
+  --bg: #05070f;
+  --bg-alt: #070a13;
+  --panel: #0c1220;
+  --panel-2: #101828;
+  --line: #1c2536;
+  --line-soft: #16203044;
+  --ink: #e7edf7;
+  --ink-dim: #a3b1c6;
+  --ink-faint: #6d7c93;
+  --amber: #f4b45c;
+  --amber-deep: #d99338;
+  --cyan: #63d3e8;
+  --violet: #9d8bff;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --wrap: 1120px;
+  --gutter: clamp(1.15rem, 4vw, 2.5rem);
+  --step--1: clamp(0.82rem, 0.79rem + 0.14vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.19vw, 1.09rem);
+  --step-1: clamp(1.15rem, 1.06rem + 0.42vw, 1.4rem);
+  --step-2: clamp(1.5rem, 1.28rem + 1vw, 2.1rem);
+  --step-3: clamp(2rem, 1.5rem + 2.3vw, 3.3rem);
+  --font-display: 'Space Grotesk', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, monospace;
+  --shadow: 0 22px 60px -28px #000, 0 1px 0 #ffffff0d inset;
+}

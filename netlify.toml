@@ -1,0 +1,60 @@
+# Netlify config for Daniel Diaz's personal site (Angular 22 SPA).
+# This folder is the site root: deploy it as its own Netlify site, or set
+# Netlify's base directory to `daniel-diaz` if several sites share one repo.
+
+[build]
+  command = "npm run build"
+  publish = "dist/daniel-diaz/browser"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Single-page app: every route must serve index.html (also in public/_redirects).
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Browsers still probe /favicon.ico; the icon is SVG.
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.svg"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Security headers for the whole site.
+# style-src needs 'unsafe-inline' because Angular injects component styles as
+# <style> elements at runtime; scripts and connections stay locked to 'self'.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Content-Security-Policy = "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; font-src 'self'; connect-src 'self'; form-action 'none'; frame-ancestors 'none'; base-uri 'self'"

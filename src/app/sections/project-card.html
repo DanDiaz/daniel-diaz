@@ -1,0 +1,61 @@
+<article class="project">
+  @if (image(); as img) {
+    <figure class="shot">
+      <picture>
+        <source
+          [srcset]="src(img.base, 1400, 'webp') + ' 1400w, ' + src(img.base, 800, 'webp') + ' 800w'"
+          [attr.sizes]="'(min-width: 1040px) 50vw, 100vw'"
+          type="image/webp"
+        />
+        <img
+          [src]="src(img.base, 1400, 'jpg')"
+          [srcset]="src(img.base, 800, 'jpg') + ' 800w, ' + src(img.base, 1400, 'jpg') + ' 1400w'"
+          [attr.sizes]="'(min-width: 1040px) 50vw, 100vw'"
+          [alt]="img.alt"
+          [width]="img.width"
+          [height]="img.height"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
+      <figcaption>{{ img.caption }}</figcaption>
+    </figure>
+  } @else if (isChatMock()) {
+    <figure class="shot shot--mock" aria-hidden="true">
+      <div class="mock-phone">
+        <div class="mock-bar"><span class="mock-dot"></span> Sparky Chat</div>
+        <div class="mock-body">
+          <div class="mock-row them">Why does this token expire early?</div>
+          <div class="mock-row me">
+            <span class="mock-reason">Checking the grant type and the clock skew&hellip;</span>
+            The access token is bound to the refresh window &mdash; your skew is 41&nbsp;s.
+          </div>
+          <div class="mock-row them">Show me the request.</div>
+        </div>
+      </div>
+      <figcaption>Illustration of the chat and reasoning view &mdash; not a screenshot.</figcaption>
+    </figure>
+  }
+
+  <div class="project-body">
+    <p class="project-kind">{{ project().kind }}</p>
+    <h3>{{ project().name }}</h3>
+    <p>{{ project().summary }}</p>
+
+    <ul class="bullets bullets--tight">
+      @for (point of project().highlights; track $index) {
+        <li>{{ point }}</li>
+      }
+    </ul>
+
+    <ul class="chips" [attr.aria-label]="'Stack for ' + project().name">
+      @for (tag of project().stack; track tag) {
+        <li>{{ tag }}</li>
+      }
+    </ul>
+
+    @if (project().repoUrl) {
+      <a class="text-link" [href]="project().repoUrl" rel="noopener">Source</a>
+    }
+  </div>
+</article>

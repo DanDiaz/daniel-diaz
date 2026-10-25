@@ -1,0 +1,36 @@
+@use '../styles/tokens' as *;
+
+.interests {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 620px) {
+  .interests {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1040px) {
+  .interests {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.interests > div {
+  border: 1px solid var(--line);
+  border-left: 2px solid var(--cyan);
+  border-radius: var(--radius-sm);
+  padding: 1.15rem 1.2rem;
+  background: #0a101c;
+
+  h3 {
+    font-size: 1.02rem;
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    font-size: var(--step--1);
+    color: var(--ink-dim);
+  }
+}

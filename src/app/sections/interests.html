@@ -1,0 +1,15 @@
+<section class="section section--alt" id="interests">
+  <div class="wrap">
+    <p class="kicker">Interests</p>
+    <h2>What I&rsquo;m tinkering with</h2>
+
+    <div class="interests">
+      @for (interest of interests; track interest.title) {
+        <div appReveal>
+          <h3>{{ interest.title }}</h3>
+          <p>{{ interest.text }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

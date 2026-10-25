@@ -1,0 +1,35 @@
+@use '../styles/tokens' as *;
+
+.skills {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 680px) {
+  .skills {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1040px) {
+  .skills {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skill-group {
+  background: #0b1120;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.3rem;
+
+  h3 {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+  }
+}

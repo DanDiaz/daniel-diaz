@@ -1,0 +1,15 @@
+<section class="section" id="education">
+  <div class="wrap">
+    <p class="kicker">Education</p>
+    <h2>Where I learned the fundamentals</h2>
+
+    <div class="edu">
+      @for (entry of entries; track entry.school) {
+        <div class="edu-row" appReveal>
+          <div class="edu-school">{{ entry.school }}</div>
+          <div class="edu-what">{{ entry.award }}</div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

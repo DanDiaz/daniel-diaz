@@ -1,0 +1,35 @@
+<section class="section section--alt" id="experience">
+  <div class="wrap">
+    <p class="kicker">Experience</p>
+    <h2>Where I&rsquo;ve worked</h2>
+
+    <div class="timeline">
+      @for (job of jobs; track job.company) {
+        <article class="entry" appReveal>
+          <div class="entry-when">
+            @if (job.from) {
+              <time [attr.datetime]="job.from">{{ job.when }}</time>
+            } @else {
+              <span>{{ job.when }}</span>
+            }
+          </div>
+
+          <h3 class="entry-role">{{ job.role }}</h3>
+          <p class="entry-org">{{ job.company }}</p>
+
+          <ul class="bullets">
+            @for (bullet of job.bullets; track $index) {
+              <li>{{ bullet }}</li>
+            }
+          </ul>
+
+          <ul class="chips" [attr.aria-label]="'Technologies used at ' + job.company">
+            @for (tag of job.stack; track tag) {
+              <li>{{ tag }}</li>
+            }
+          </ul>
+        </article>
+      }
+    </div>
+  </div>
+</section>

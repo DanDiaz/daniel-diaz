@@ -1,0 +1,31 @@
+@use '../styles/tokens' as *;
+
+.site-foot {
+  border-top: 1px solid var(--line);
+  padding: 2.2rem 0 3rem;
+  background: #04060c;
+}
+
+.foot-inner {
+  display: grid;
+  gap: 0.5rem;
+}
+
+p {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+}
+
+.foot-credit {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  color: #56637a;
+}
+
+@media print {
+  :host {
+    display: none !important;
+  }
+}
