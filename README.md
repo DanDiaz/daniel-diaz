@@ -42,7 +42,10 @@ stitched full-page capture. `tools/shot.cjs` also prints console errors and fail
 ## Deploy to Netlify
 
 **Option A — drag and drop.** <https://app.netlify.com/drop> → drag the `dist/daniel-diaz/browser`
-folder onto the page. Fast, but you re-upload by hand.
+folder onto the page. Fast, but you re-upload by hand, and Netlify does not apply
+`netlify.toml` to a manual drop — so you get the SPA fallback (it ships inside `dist/` as
+`_redirects`) but **none of the security headers**. Use Option B, or add a `_headers` file to
+`public/` if you insist on dropping folders.
 
 **Option B — from Git (recommended).** Push this folder to a repo, then *Add new site →
 Import an existing project*. Netlify reads [`netlify.toml`](netlify.toml) and does the rest:
@@ -51,7 +54,7 @@ Import an existing project*. Netlify reads [`netlify.toml`](netlify.toml) and do
 | --- | --- |
 | Build command | `npm run build` |
 | Publish directory | `dist/daniel-diaz/browser` |
-| Node version | 22 (pinned in `netlify.toml`) |
+| Node version | 24 (pinned in `netlify.toml` — `@angular/cli` 22.2 engines want `^22.22.3 \|\| ^24.15.0 \|\| >=26`, and the build is verified on Node 24) |
 
 If this site lives inside the shared `websites/` repo, set **Base directory** to `daniel-diaz`.
 `public/_redirects` already contains the SPA fallback (`/* → /index.html`), and
@@ -149,9 +152,13 @@ tools/shot.cjs                     headless screenshot + console-error check
   + `aria-modal` lightbox with Escape/arrow keys and focus moved into the dialog, keyboard-operable
   gallery tiles, `:focus-visible` outlines, and everything honours `prefers-reduced-motion`
   (the starfield draws one still frame).
-- **Self-hosted fonts, no third-party requests**, which lets `netlify.toml` keep a strict
-  Content-Security-Policy (`default-src 'self'`; `style-src` needs `'unsafe-inline'` because
-  Angular injects component styles as `<style>` elements).
+- **Strict CSP, so no critical-CSS inlining.** Angular's build inlines above-the-fold CSS and
+  adds a small **inline** script to swap the deferred stylesheet back in — which
+  `script-src 'self'` blocks. `optimization.styles.inlineCritical` is therefore `false` in
+  `angular.json`, so `index.html` has one plain `<link rel="stylesheet">` and no inline script.
+  The build is checked by serving `dist/` with the exact `netlify.toml` CSP header: zero CSP
+  violations, styles and self-hosted fonts loaded. Re-check it with the same approach if a
+  future Angular version starts emitting an inline script again.
 - **Credits.** The Milky Way strip behind the hero is ESO / S. Brunier (CC BY 4.0) — the same
   panorama used in SIGNAL//GHOST — credited in the footer. Fonts are SIL OFL. The Children of the
   Sun and SIGNAL//GHOST images are real in-engine captures from those projects. Every astro frame

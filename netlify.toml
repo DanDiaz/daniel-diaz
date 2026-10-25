@@ -7,7 +7,9 @@
   publish = "dist/daniel-diaz/browser"
 
 [build.environment]
-  NODE_VERSION = "22"
+# @angular/cli 22.2 engines want ^22.22.3 || ^24.15.0 || >=26.0.0, and the build is
+# verified on Node 24 locally - so pin 24 rather than risk an older 22.x on the CDN image.
+  NODE_VERSION = "24"
 
 # Single-page app: every route must serve index.html (also in public/_redirects).
 [[redirects]]
