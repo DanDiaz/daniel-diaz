@@ -155,8 +155,9 @@ tools/make-resume-pdf.cjs          print the site to the two-page résumé PDF (
    a real one: put `sparky-1400.jpg` / `sparky-800.jpg` in `public/assets/img/` and change that
    project's `media` from `{ kind: 'chat-mock' }` to
    `{ kind: 'image', image: { base: '/assets/img/sparky', alt: '…', caption: '…', width: 1400, height: 875 } }`.
-4. **Dates.** OpenText reads *Sep 2016 – Present*, Neovest *May 2014 – Jan 2015*, taken from the
-   résumé PDF. Update `src/app/data/experience.data.ts` if anything has moved.
+4. **Dates.** OpenText reads *Jan 2023 – Present* and Micro Focus *Jun 2017 – Jan 2023* (its
+   `note` line explains the acquisition); Neovest *May 2014 – Jan 2015*. Taken from the résumé
+   PDF — update `src/app/data/experience.data.ts` if anything has moved.
 5. **Availability.** The "Looking for" panel and the hero facts come from `site.config.ts`.
 6. **Link previews.** `public/assets/img/og-image.jpg` is your Andromeda frame cropped to
    1200×630 (it is also the iOS home-screen icon). The previous card — the Children of the

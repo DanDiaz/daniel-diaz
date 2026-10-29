@@ -28,6 +28,8 @@ export interface Job {
   /** ISO date for the leading <time>, optional for "Ongoing" entries */
   from?: string;
   to?: string;
+  /** one-line context under the company, e.g. "acquired by OpenText in Jan 2023" */
+  note?: string;
   bullets: string[];
   stack: string[];
 }

@@ -59,6 +59,14 @@
   font-weight: 500;
 }
 
+/* One line of context under the company, e.g. the Micro Focus acquisition. */
+.entry-note {
+  margin: -0.55rem 0 0.9rem;
+  font-size: var(--step--1);
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
 @media print {
   .entry {
     padding-bottom: 10pt;

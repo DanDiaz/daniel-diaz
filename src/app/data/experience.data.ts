@@ -5,12 +5,50 @@ export const JOBS: Job[] = [
   {
     company: 'OpenText',
     role: 'Lead Software Engineer',
-    when: 'Sep 2016 – Present',
-    from: '2016-09',
+    when: 'Jan 2023 – Present',
+    from: '2023-01',
     bullets: [
       'Work with software development, quality assurance and product management teams to design ' +
         'and implement features and protocols for Identity Management and Multi-Factor ' +
         'Authentication solutions.',
+      'Named Security Champion for the product: runs CVE and dependency scanning across the ' +
+        'codebase with OWASP Dependency-Check and Black Duck, triages what comes back and drives ' +
+        'the fixes, so the product holds up against modern security standards rather than the ' +
+        'ones in place when it started.',
+      "Built an automated testing framework that implements a RESTful API against OpenText's " +
+        'OAuth/SAML product — it grants access tokens with grant types, requests resources from a ' +
+        'Resource Owner, and acts as an attacker attempting to abuse the authentication system.',
+      'Lead a team of engineers continuously developing that automation project: direction, ' +
+        'review and mentoring.',
+      'Implemented several Continuous Integration pipelines with Jenkins, Kubernetes and Docker.',
+    ],
+    stack: [
+      'Java',
+      'Groovy',
+      'Angular',
+      'OAuth 2.0',
+      'SAML 2.0',
+      'MFA / 2FA',
+      'FIDO2 / WebAuthn',
+      'CVE & dependency scanning',
+      'OWASP Dependency-Check',
+      'Black Duck',
+      'REST',
+      'Jenkins',
+      'Kubernetes',
+      'Docker',
+      'Linux',
+      'Team leadership',
+    ],
+  },
+  {
+    company: 'Micro Focus',
+    role: 'Senior Software Engineer',
+    when: 'Jun 2017 – Jan 2023',
+    from: '2017-06',
+    to: '2023-01',
+    note: 'Acquired by OpenText in January 2023 — same product, same team.',
+    bullets: [
       'Deep work on the authentication protocols themselves: OAuth 2.0 flows and grant types, ' +
         'SAML 2.0 assertions and federation, and the token and session handling behind them — down ' +
         'to the servlet-container layer, where the handshakes, redirects and TLS actually land on ' +
@@ -18,20 +56,10 @@ export const JOBS: Job[] = [
       'Extended multi-factor authentication past one-time codes: biometric factors such as facial ' +
         'recognition and fingerprint, and FIDO2 / WebAuthn passkey-style flows, including the ' +
         'enrollment and verification plumbing around them.',
-      'Named Security Champion for the product: runs CVE and dependency scanning across the ' +
-        'codebase with OWASP Dependency-Check and Black Duck, triages what comes back and drives ' +
-        'the fixes, so the product holds up against modern security standards rather than the ' +
-        'ones in place when it started.',
       'Developed the Angular web application that lets customers fully customize the Identity ' +
         'Management solution to suit their own environment.',
-      "Built an automated testing framework that implements a RESTful API against OpenText's " +
-        'OAuth/SAML product — it grants access tokens with grant types, requests resources from a ' +
-        'Resource Owner, and acts as an attacker attempting to abuse the authentication system.',
-      'Lead a team of engineers continuously developing that automation project: direction, ' +
-        'review and mentoring.',
-      'Find and fix product defects using standard debugging techniques, and review and provide ' +
-        'input for product development and documentation.',
-      'Implemented several Continuous Integration pipelines with Jenkins, Kubernetes and Docker.',
+      'Found and fixed product defects using standard debugging techniques, and reviewed and ' +
+        'provided input for product development and documentation.',
     ],
     stack: [
       'Java',
@@ -44,13 +72,9 @@ export const JOBS: Job[] = [
       'Biometric auth',
       'Tomcat',
       'Jetty',
-      'CVE & dependency scanning',
-      'OWASP Dependency-Check',
-      'Black Duck',
+      'Session & token flows',
       'REST',
-      'Jenkins',
-      'Kubernetes',
-      'Docker',
+      'Debugging & profiling',
       'Linux',
     ],
   },
